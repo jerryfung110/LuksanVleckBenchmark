@@ -1,4 +1,4 @@
-function chained_powell_model(N = 1000; T = Float64; backend = CUDABackend())
+function chained_powell_model(N = 1000; T = Float64, backend = CUDABackend(),  kwargs ...)
     n = N
 
     c = ExaModels.ExaCore(T; backend = backend)

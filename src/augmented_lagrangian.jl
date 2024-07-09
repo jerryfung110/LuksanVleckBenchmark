@@ -1,4 +1,4 @@
-function augmented_lagrangian_model(N = 1000; T = Float64; backend = CUDABackend())
+function augmented_lagrangian_model(N = 1000; T = Float64, backend = CUDABackend(), kwargs ...)
     h = 1/(N+1)
     l1 = -0.002008
     l2 = -0.001900

@@ -1,4 +1,4 @@
-function broyden_tridiagonal_model(N = 1000; T = Float64; backend = CUDABackend())
+function broyden_tridiagonal_model(N = 1000, T = Float64; backend = CUDABackend(),  kwargs ...)
     c = ExaModels.ExaCore(T; backend = backend)
     
     x = ExaModels.variable(c, N; start = (fill(-1, N)))

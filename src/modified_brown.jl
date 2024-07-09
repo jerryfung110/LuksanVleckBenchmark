@@ -1,4 +1,4 @@
-function modified_brown_model(N = 1000; T = Float64; backend = CUDABackend())
+function modified_brown_model(N = 1000; T = Float64, backend = CUDABackend(),  kwargs ...)
     n = Int(N)
 
     c = ExaModels.ExaCore(T; backend = backend)

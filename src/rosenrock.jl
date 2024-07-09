@@ -1,4 +1,4 @@
-function rosenrock_model(N = 1000; T = Float64; backend = CUDABackend())
+function rosenrock_model(N = 1000; T = Float64, backend = CUDABackend(), kwargs ...)
     c = ExaModels.ExaCore(T; backend = backend)
     x = ExaModels.variable(c, N; start = (mod(i, 2) == 1 ? -1.2 : 1.0 for i = 1:N))
     ExaModels.constraint(

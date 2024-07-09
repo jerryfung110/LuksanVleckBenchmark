@@ -1,4 +1,4 @@
-function broyden_banded_model(N = 1000; T = Float64; backend = CUDABackend())
+function broyden_banded_model(N = 1000; T = Float64, backend = CUDABackend(),  kwargs ...)
     c = ExaModels.ExaCore(T; backend = backend)
     
     x = ExaModels.variable(c, N; start = fill(3, N))

@@ -1,4 +1,4 @@
-function cragg_levy_model(N = 1000; T = Float64; backend = CUDABackend())
+function cragg_levy_model(N = 1000; T = Float64, backend = CUDABackend(),  kwargs ...)
     c = ExaModels.ExaCore(T; backend = backend)
     
     x = ExaModels.variable(c, N; start = (mod(i, 4) == 1 ? 1 : 2 for i = 1:N))

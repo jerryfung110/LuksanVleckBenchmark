@@ -1,4 +1,4 @@
-function generalized_brown_model(N = 1000; T = Float64; backend = CUDABackend())
+function generalized_brown_model(N = 1000; T = Float64, backend = CUDABackend(),  kwargs ...)
     n = Int(N)
 
     c = ExaModels.ExaCore(T; backend = backend)
@@ -11,7 +11,7 @@ function generalized_brown_model(N = 1000; T = Float64; backend = CUDABackend())
     )
 
 
-    ExaModels.objective(c, (x[2i-1])^(x[2i]^2 + 1) + (x[2i])^(x[2i-1]^2 + 1) for i = 1:Int(N/2))
+    ExaModels.objective(c, (x[2i-1]^2)^(x[2i]^2 + 1) + (x[2i]^2)^(x[2i-1]^2 + 1) for i = 1:Int(N/2))
     return ExaModels.ExaModel(c)
 end
 
