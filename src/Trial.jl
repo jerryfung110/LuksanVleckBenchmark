@@ -6,10 +6,13 @@ import ExaModels: ExaModels, NLPModels
 include("rosenrock.jl")
 include("wood.jl")
 include("cragg_levy.jl")
-include("broyden_banded.jl")
-include("broyden_tridiagonal.jl")
-include("chained_power.jl")
-
+#include("broyden_banded.jl")
+#include("broyden_tridiagonal.jl")
+include("chained_powell.jl")
+include("augmented_lagrangian.jl")
+include("trigo_tridiagonal.jl")
+include("modified_brown.jl")
+include("generalized_brown.jl")
 const NAMES = filter(names(optimizer; all = true)) do x
     str = string(x)
     endswith(str, "model") && !startswith(str, "#")
