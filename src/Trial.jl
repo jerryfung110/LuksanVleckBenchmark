@@ -13,7 +13,7 @@ include("augmented_lagrangian.jl")
 include("trigo_tridiagonal.jl")
 include("modified_brown.jl")
 include("generalized_brown.jl")
-const NAMES = filter(names(optimizer; all = true)) do x
+const NAMES = filter(names(Trial; all = true)) do x
     str = string(x)
     endswith(str, "model") && !startswith(str, "#")
 end
