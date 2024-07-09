@@ -3,7 +3,7 @@ function trigo_tridiagonal_model(N = 1000; T = Float64; backend = CUDABackend())
     
     c = ExaModels.ExaCore(T; backend = backend)
     
-    x = ExaModels.variable(c, N; start = fill(1, N))
+    x = ExaModels.variable(c, N; start = (fill(1, N)))
     
     ExaModels.constraint(
         c,

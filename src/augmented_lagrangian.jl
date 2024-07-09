@@ -6,7 +6,7 @@ function augmented_lagrangian_model(N = 1000; T = Float64; backend = CUDABackend
 
     c = ExaModels.ExaCore(T; backend = backend)
     
-    x = ExaModels.variable(c, N; start = mod(i, 2) == 1 ? -1 : 2 for i=1:N )
+    x = ExaModels.variable(c, N; start = (mod(i, 2) == 1 ? -1.0 : 2.0 for i=1:N))
     
     ExaModels.constraint(
         c,
@@ -14,7 +14,7 @@ function augmented_lagrangian_model(N = 1000; T = Float64; backend = CUDABackend
     )
     
     ExaModels.objective(c, exp(prod(x[5i+1-j] for j = 1:5)) + 10 *((sum(x[5i+1-j]^2 for j = 1:5) - 10 - l1)^2) +
-    (x[5i-3] * x[5i-2] - 5 * x[5i-1] * x[5i] - l2)^2 + (x[5i-4]^3 + x[5i-3]^3 + 1 - l3)^2 for i =1:N/5)
+    (x[5i-3] * x[5i-2] - 5 * x[5i-1] * x[5i] - l2)^2 + (x[5i-4]^3 + x[5i-3]^3 + 1 - l3)^2 for i =1:Int(N/5))
     
     return ExaModels.ExaModel(c)
 end

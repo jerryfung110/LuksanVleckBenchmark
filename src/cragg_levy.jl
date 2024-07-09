@@ -9,7 +9,7 @@ function cragg_levy_model(N = 1000; T = Float64; backend = CUDABackend())
     )
     
     ExaModels.objective(c, (exp(x[2i-1]) - x[2i])^4 + 100 * (x[2i] - x[2i+1])^6 + tan(x[2i+1] - x[2i+2])^4 +
-    8 * x[2i-1]^8 + (x[2i+2] - 1)^2 for i = 1:N/2-1)
+    8 * x[2i-1]^8 + (x[2i+2] - 1)^2 for i = 1:Int(N/2-1))
     
     return ExaModels.ExaModel(c)
 end
