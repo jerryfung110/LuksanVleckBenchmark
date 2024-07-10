@@ -4,7 +4,7 @@ import Downloads
 import ExaModels: ExaModels, NLPModels
 
 include("rosenrock.jl")
-include("wood.jl")
+#include("wood.jl")
 include("cragg_levy.jl")
 #include("broyden_banded.jl")
 #include("broyden_tridiagonal.jl")
