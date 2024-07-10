@@ -6,6 +6,7 @@ version = "1.0.0-DEV"
 [deps]
 Downloads = "f43a241f-c20a-4ad4-852c-f6b1247861c6"
 ExaModels = "1037b233-b668-4ce9-9b63-f9f681f55dd2"
+MadNLP = "2621e9c9-9eb4-46b1-8089-e8c72242dfb6"
 NLPModelsIpopt = "f4238b75-b362-5c4c-b852-0801c9a21d71"
 
 [compat]

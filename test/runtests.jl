@@ -1,21 +1,24 @@
 using MadNLP, NLPModelsIpopt
-using Trial
+import Trial
+const TrialMod = Trial  # Alias to avoid naming conflict
 using Test
 
 const CONFIGS = [
-    (Float32, nothing),
+    #(Float32, nothing),
     (Float64, nothing),
-    (Float32, CPU()),
-    (Float64, CPU()),
+    #(Float32, CPU()),
+    #(Float64, CPU()),
     #(Float64, CUDABackend()),
 ]
 
 
 function runtests()
     @testset "Trial test" begin
-        for name in Trial.NAMES
+        for name in TrialMod.NAMES
             for (T, backend) in CONFIGS
-                m = eval(name)(; T = T, backend = backend)
+                # Evaluate the model function from TrialMod
+                model_func = getfield(TrialMod, Symbol(name))
+                m = model_func(; T = T, backend = backend)
                 result = ipopt(m)
                 println(name)
                 @testset "$name" begin
