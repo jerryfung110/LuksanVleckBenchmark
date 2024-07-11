@@ -13,7 +13,11 @@ include("augmented_lagrangian.jl")
 include("trigo_tridiagonal.jl")
 include("modified_brown.jl")
 include("generalized_brown.jl")
-println("HI")
+include("Chained_HS46.jl")
+include("Chained_HS47.jl")
+include("Chained_HS48.jl")
+include("Chained_HS49.jl")
+
 const NAMES = filter(names(Trial; all = true)) do x
     str = string(x)
     endswith(str, "model") && !startswith(str, "#")
