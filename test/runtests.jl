@@ -1,14 +1,14 @@
-using MadNLP, NLPModelsIpopt
+using MadNLP, NLPModelsIpopt, CUDA, KernelAbstractions
 import Trial
 const TrialMod = Trial  # Alias to avoid naming conflict
 using Test
 
 const CONFIGS = [
     #(Float32, nothing),
-    (Float64, nothing),
+    #(Float64, nothing),
     #(Float32, CPU()),
     #(Float64, CPU()),
-    #(Float64, CUDABackend()),
+    (Float64, CUDABackend()),
 ]
 
 
