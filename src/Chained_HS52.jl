@@ -1,4 +1,4 @@
-function Chained_HS51_model(N = 1000; T = Float64, backend=CUDABackend(), kwargs ...)
+function Chained_HS52_model(N = 1000; T = Float64, backend=CUDABackend(), kwargs ...)
     nC = (3 * (N-1) ÷ 4)
     It_L1 = [4*div(i-1, 3) for i in 1:3:nC-3]
     It_L2 = [4*div(i-1, 3) for i in 2:3:nC-3]
