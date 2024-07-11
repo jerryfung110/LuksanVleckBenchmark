@@ -17,6 +17,10 @@ include("Chained_HS46.jl")
 include("Chained_HS47.jl")
 include("Chained_HS48.jl")
 include("Chained_HS49.jl")
+include("Chained_HS50.jl")
+include("Chained_HS51.jl")
+include("Chained_HS52.jl")
+include("Chained_HS53.jl")
 
 const NAMES = filter(names(Trial; all = true)) do x
     str = string(x)
