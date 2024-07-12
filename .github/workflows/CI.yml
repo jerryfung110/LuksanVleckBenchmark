@@ -14,7 +14,7 @@ concurrency:
 jobs:
   test:
     name: Julia ${{ matrix.version }} - ${{ matrix.os }} - ${{ matrix.arch }} - ${{ github.event_name }}
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-20.04-gpu  # Use the GPU runner
     timeout-minutes: 60
     permissions: # needed to allow julia-actions/cache to proactively delete old caches that it has created
       actions: write
@@ -26,7 +26,7 @@ jobs:
           - '1.10'
           - '1.9'
         os:
-          - ubuntu-latest
+          - ubuntu-20.04-gpu
         arch:
           - x64
     steps:
@@ -37,6 +37,11 @@ jobs:
           arch: ${{ matrix.arch }}
       - uses: julia-actions/cache@v2
       - uses: julia-actions/julia-buildpkg@v1
+       - name: Install CUDA toolkit
+        run: sudo apt-get update && sudo apt-get install -y nvidia-cuda-toolkit
+
+      - name: Install Julia dependencies
+        run: julia -e 'using Pkg; Pkg.instantiate()'
       - uses: julia-actions/julia-runtest@v1
       - uses: julia-actions/julia-processcoverage@v1
       - uses: codecov/codecov-action@v4
