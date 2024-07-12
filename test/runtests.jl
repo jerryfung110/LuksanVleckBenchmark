@@ -1,4 +1,4 @@
-using MadNLP, NLPModelsIpopt
+using NLPModelsIpopt
 import Trial
 const TrialMod = Trial  # Alias to avoid naming conflict
 using Test
