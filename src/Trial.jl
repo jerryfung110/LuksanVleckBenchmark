@@ -6,7 +6,7 @@ import ExaModels: ExaModels, NLPModels
 include("rosenrock.jl") 
 include("wood.jl")
 include("cragg_levy.jl")
-#include("broyden_banded.jl")
+include("broyden_banded.jl")
 include("broyden_tridiagonal.jl")
 include("chained_powell.jl")
 include("augmented_lagrangian.jl")

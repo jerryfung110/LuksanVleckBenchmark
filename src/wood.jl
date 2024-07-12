@@ -1,7 +1,8 @@
-function wood_model(N = 10; T = Float64, kwargs...)
-    c = ExaModels.ExaCore(T)
+
+function wood_model(N = 10; T = Float64, backend = CUDABackend(), kwargs...)
+    c = ExaModels.ExaCore(T; backend = backend)
     x = ExaModels.variable(c, N; start = (mod(i, 2) == 1 ? -2 : 0 for i = 1:N))
-    println(1)
+
     # Define the constraints
     con = ExaModels.constraint(
         c,
@@ -16,7 +17,7 @@ function wood_model(N = 10; T = Float64, kwargs...)
     println(3)
     ExaModels.objective(c, (100 * (x[2*i-1]^2 - x[2*i])^2 + (x[2*i-1] - 1)^2 +
     90 * (x[2*i+1]^2 - x[2*i+2])^2 + (x[2*i+1] - 1)^2 +
-    10 * (x[2*i] + x[2*i+2] - 2)^2 + ((x[2*i] - x[2*i+2])^2 / 10)) for i = 400:Int(N/2))
+    10 * (x[2*i] + x[2*i+2] - 2)^2 + ((x[2*i] - x[2*i+2])^2 / 10)) for i = 1:N ÷ 2 -1)
     
     return ExaModels.ExaModel(c)
 end
