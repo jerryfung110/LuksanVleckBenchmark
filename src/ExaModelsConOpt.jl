@@ -1,4 +1,4 @@
-module Trial
+module ExaModelsConOpt
 
 import Downloads
 import ExaModels: ExaModels, NLPModels
@@ -22,7 +22,7 @@ include("Chained_HS51.jl")
 include("Chained_HS52.jl")
 include("Chained_HS53.jl")
 
-const NAMES = filter(names(Trial; all = true)) do x
+const NAMES = filter(names(ExaModelsConOpt; all = true)) do x
     str = string(x)
     endswith(str, "model") && !startswith(str, "#")
 end
@@ -33,4 +33,4 @@ end
 
 
 
-end # module Trail
+end # module ExaModelsConOpt

@@ -1,6 +1,6 @@
 using NLPModelsIpopt
-import Trial
-const TrialMod = Trial  # Alias to avoid naming conflict
+import ExaModelsConOpt
+const ExaModelsConOptMod = ExaModelsConOpt  # Alias to avoid naming conflict
 using Test
 
 const CONFIGS = [
@@ -13,11 +13,11 @@ const CONFIGS = [
 
 
 function runtests()
-    @testset "Trial test" begin
-        for name in TrialMod.NAMES
+    @testset "ExaModelsConOpt test" begin
+        for name in ExaModelsConOptMod.NAMES
             for (T, backend) in CONFIGS
-                # Evaluate the model function from TrialMod
-                model_func = getfield(TrialMod, Symbol(name))
+                # Evaluate the model function from ExaModelsConOptMod
+                model_func = getfield(ExaModelsConOptMod, Symbol(name))
                 m = model_func(; T = T, backend = backend)
                 result = ipopt(m)
                 println(name)
@@ -31,7 +31,7 @@ end
 
 runtests()
 
-#@testset "Trial.jl" begin
+#@testset "ExaModelsConOpt.jl" begin
 #    # Write your tests here.
 
 #end
