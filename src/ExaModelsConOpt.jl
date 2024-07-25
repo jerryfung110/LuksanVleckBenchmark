@@ -1,6 +1,5 @@
 module ExaModelsConOpt
 
-import Downloads
 import ExaModels: ExaModels, NLPModels
 
 include("rosenrock.jl") 
