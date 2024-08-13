@@ -1,4 +1,4 @@
-using NLPModelsIpopt
+using MadNLP, MadNLPGPU, CUDA
 import ExaModelsConOpt
 const ExaModelsConOptMod = ExaModelsConOpt  # Alias to avoid naming conflict
 using Test
@@ -8,7 +8,7 @@ const CONFIGS = [
     (Float64, nothing),
     #(Float32, CPU()),
     #(Float64, CPU()),
-    #(Float64, CUDABackend()),
+    (Float64, CUDABackend()),
 ]
 
 
@@ -19,10 +19,10 @@ function runtests()
                 # Evaluate the model function from ExaModelsConOptMod
                 model_func = getfield(ExaModelsConOptMod, Symbol(name))
                 m = model_func(; T = T, backend = backend)
-                result = ipopt(m)
                 println(name)
+                result = madnlp(m)
                 @testset "$name" begin
-                    @test result.solver_specific[:internal_msg] == :Solve_Succeeded
+                    @test result.status == MadNLP.SOLVE_SUCCEEDED
                 end
             end
         end

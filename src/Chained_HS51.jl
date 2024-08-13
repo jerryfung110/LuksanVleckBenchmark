@@ -4,7 +4,7 @@ function Chained_HS51_model(N = 1000; T = Float64, backend=CUDABackend(), kwargs
     It_L2 = [4*div(i-1, 3) for i in 2:3:nC-3]
     It_L3 = [4*div(i-1, 3) for i in 3:3:nC-3]
     c = ExaModels.ExaCore(T; backend = backend)
-    x = ExaModels.variable(c, N; start = (mod(i, 4) == 1 ? 2.5 : mod(i, 4) == 2 ? 0.5 : mod(i, 4) == 3 ? 2 : -1 for i = 1:N))
+    x = ExaModels.variable(c, N; start = (mod(i, 4) == 1 ? 2.5 : mod(i, 4) == 2 ? 0.5 : mod(i, 4) == 3 ? 2.0 : -1.0 for i = 1:N))
     ExaModels.constraint(
         c,
         x[l+1]^2 + 3 * x[l+2] - 4 for l in It_L1
