@@ -1,3 +1,6 @@
+# The following question was adopted from Lukšan, L., & Vlček, J. (1999). Sparse and Partially Separable Test Problems for Unconstrained and Equality Constrained Optimization.
+# Institute of Computer Science, Academy of Sciences of the Czech Republic. Technical report No. 767 Problem 5.16
+# The index in nC would be out of range for the constraints mod. Threfore, the last term in each constraint are not implemented. The number of constraints fulfilled the question. 
 function Chained_HS51_model(N = 1000; T = Float64, backend=CUDABackend(), kwargs ...)
     nC = (3 * (N-1) ÷ 4)
     It_L1 = [4*div(i-1, 3) for i in 1:3:nC-3]
