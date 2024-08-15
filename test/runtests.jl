@@ -1,6 +1,6 @@
 using MadNLP, MadNLPGPU, CUDA
-import ExaModelsConOpt
-const ExaModelsConOptMod = ExaModelsConOpt  # Alias to avoid naming conflict
+import LuksanScalableBenchmark
+const LuksanScalableBenchmarkMod = LuksanScalableBenchmark  # Alias to avoid naming conflict
 using Test
 
 const CONFIGS = [
@@ -13,11 +13,11 @@ const CONFIGS = [
 
 
 function runtests()
-    @testset "ExaModelsConOpt test" begin
-        for name in ExaModelsConOptMod.NAMES
+    @testset "LuksanScalableBenchmark test" begin
+        for name in LuksanScalableBenchmarkMod.NAMES
             for (T, backend) in CONFIGS
-                # Evaluate the model function from ExaModelsConOptMod
-                model_func = getfield(ExaModelsConOptMod, Symbol(name))
+                # Evaluate the model function from LuksanScalableBenchmarkMod
+                model_func = getfield(LuksanScalableBenchmarkMod, Symbol(name))
                 m = model_func(; T = T, backend = backend)
                 println(name)
                 result = madnlp(m)
@@ -31,7 +31,7 @@ end
 
 runtests()
 
-#@testset "ExaModelsConOpt.jl" begin
+#@testset "LuksanScalableBenchmark.jl" begin
 #    # Write your tests here.
 
 #end
