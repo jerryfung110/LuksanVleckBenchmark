@@ -1,4 +1,4 @@
-name = "LuksanScalableBenchmark"
+name = "LuksanVleckBenchmark"
 uuid = "dc0393f0-98a3-4386-a65b-465e1307889b"
 authors = ["jerryfung"]
 version = "1.0.0-DEV"

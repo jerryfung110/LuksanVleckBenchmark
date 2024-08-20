@@ -1,11 +1,11 @@
-import LuksanScalableBenchmark
-const LuksanScalableBenchmarkMod = LuksanScalableBenchmark
+import LuksanVleckBenchmark
+const LuksanVleckBenchmarkMod = LuksanVleckBenchmark
 
 # Verify that each model in NAMES is defined
 function check_models_defined()
     all_defined = true
-    for name in LuksanScalableBenchmarkMod.NAMES
-        if isdefined(LuksanScalableBenchmarkMod, Symbol(name))
+    for name in LuksanVleckBenchmarkMod.NAMES
+        if isdefined(LuksanVleckBenchmarkMod, Symbol(name))
             println("$name is defined")
         else
             println("$name is NOT defined")

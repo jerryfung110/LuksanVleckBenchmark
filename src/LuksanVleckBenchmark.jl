@@ -1,4 +1,4 @@
-module LuksanScalableBenchmark
+module LuksanVleckBenchmark
 
 import ExaModels: ExaModels, NLPModels
 
@@ -21,7 +21,7 @@ include("Chained_HS51.jl")
 include("Chained_HS52.jl")
 include("Chained_HS53.jl")
 
-const NAMES = filter(names(LuksanScalableBenchmark; all = true)) do x
+const NAMES = filter(names(LuksanVleckBenchmark; all = true)) do x
     str = string(x)
     endswith(str, "model") && !startswith(str, "#")
 end
@@ -32,4 +32,4 @@ end
 
 
 
-end # module LuksanScalableBenchmark
+end # module LuksanVleckBenchmark
